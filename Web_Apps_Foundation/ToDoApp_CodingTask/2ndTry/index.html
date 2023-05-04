@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>ToDo App</h1>
+        <section class="input_area">
+
+
+            <input type="text" name="ToDo" id="toDo-Input" placeholder="Get your sh*t done!">
+            <button id="addBtn" disabled>Add</button>
+
+        </section>
+    </header>
+
+    <main>
+
+        <section class="filter_area">
+            <h2>Filter & Options</h2>
+            <!-- <form></form>  ÜBERlegen umzustrukturieren -->
+            <fieldset name="filterField" class="radio_buttons">
+                <legend>Select toDos</legend>
+
+                <div>
+                    <input type="radio" name="Filter" id="filterAll" value="all" checked>
+                    <label for="filterAll">All</label>
+                </div>
+                <div>
+                    <input type="radio" name="Filter" id="filterDone" value="done">
+                    <label for="filterDone">Done</label>
+                </div>
+                <div>
+                    <input type="radio" name="Filter" id="filterOpen" value="open">
+                    <label for="filterOpen">Open</label>
+                </div>
+            </fieldset>
+            <section class="delete_btn_area">
+                <div>
+                    <button class="btn_styling" id="deleteBtn">Delete done ToDos</button>
+                </div>
+            </section>
+
+        </section>
+        <section>
+            <h2>Tasks</h2>
+            <div>
+
+                <ul class="output_area" id="toDo-List">
+                </ul>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

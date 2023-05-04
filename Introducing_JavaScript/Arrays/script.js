@@ -10,19 +10,19 @@
 
 //Versuch 2 mit Copy von Loops:
 
-function copyArray(array, index) {
-  newArray = [];
+// function copyArray(array, index) {
+//   newArray = [];
 
-  for (let index = 0; index < array.length; index++) {
-    newArray.push(array[index]);
-  }
-  return newArray;
-}
+//   for (let index = 0; index < array.length; index++) {
+//     newArray.push(array[index]);
+//   }
+//   return newArray;
+// }
 
-//TODO: Implement the removeItem function
+// //TODO: Implement the removeItem function
 
-const animals = ["Dog", "Cat", "Lion"];
-console.log(copyArray(animals, 1));
+// const animals = ["Dog", "Cat", "Lion"];
+// console.log(copyArray(animals, 1));
 
 // console.log(removeItem(animals, 1));
 // //result should be: ["Cat", "Lion"]
@@ -40,17 +40,17 @@ console.log(copyArray(animals, 1));
 
 // // Task 2
 
-// function sumOfCharacters(array) {
-//   let count = 0;
+function sumOfCharacters(array) {
+  let count = 0;
 
-//   for (let index = 0; index < array.length; index++) {
-//     if (typeof array[index] === "string") {
-//       count += array[index].length;
-//     }
-//   }
+  for (let index = 0; index < array.length; index++) {
+    if (typeof array[index] === "string") {
+      count += array[index].length;
+    }
+  }
 
-//   return count;
-// }
+  return count;
+}
 
 // // TODO: Implement the sumOfCharacters function
 
@@ -72,15 +72,15 @@ console.log(copyArray(animals, 1));
 
 // Lösung von Kai
 
-// function removeItem(array, position) {
-//   newArray = [...array]; //this makes a copy and not a reference
-//   newArray.splice(position - 1, 1);
-//   return newArray;
-// }
+function removeItem(array, position) {
+  newArray = [...array]; //this makes a copy and not a reference Alternative: structuredClone(array)
+  newArray.splice(position - 1, 1);
+  return newArray;
+}
 
-// const animals = ["Dog", "Cat", "Lion"];
+const animals = ["Dog", "Cat", "Lion"];
 
-// console.log(removeItem(animals, 1));
+console.log(removeItem(animals, 1));
 // // result should be: ["Cat", "Lion"]
 
 // console.log(animals);

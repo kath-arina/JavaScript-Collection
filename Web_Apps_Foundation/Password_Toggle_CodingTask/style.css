@@ -1,0 +1,36 @@
+/*GENERAL*/
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Kanit", sans-serif;
+  font-size: 16px;
+  --Background: rgb(255, 227, 157);
+  height: 100%;
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--Background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#show_hide {
+  position: relative;
+  border: 2px solid black;
+  border-radius: 3px;
+  padding: 0.3rem 1rem;
+}
+
+.active {
+}
