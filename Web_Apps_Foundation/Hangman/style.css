@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  display: flex;
+  height: 1200px;
+  justify-content: center;
+  margin-top: 15rem;
+  background: black;
+}
+
+/* html,
+body {
+  
+} */
+
+body {
+  width: 1200px;
+  height: 600px;
+  margin: 0;
+  background: pink;
+  padding: 0rem 4rem;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+main {
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  overflow: auto;
+}
+
+#output-section {
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#keyboard {
+  grid-row: 2/3;
+}
