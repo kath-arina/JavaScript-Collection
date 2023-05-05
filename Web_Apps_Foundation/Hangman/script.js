@@ -1,70 +1,113 @@
 // __________________________HANNGMAN________________________________________
 
-const allLetterBtns = document.querySelectorAll("#keyboard"); // hiermit alle Buttons wieder disables=false machen, sobald Btn NewGame gedrückt wird
+const allLetterBtns = document.querySelectorAll("#keyboard button");
 const newGameBtn = document.querySelector("#newGameBtn");
 const outputBox = document.querySelector("#output-section");
+const failBox = document.querySelector("#failCount");
+const statusBox = document.querySelector("#Status");
 
 const wordList = [
-  "Test",
-  "Tadel",
-  "topfen",
-  "Tiger",
-  "Tulpe",
-  "Tanz",
-  "Trut-Hahn",
-  "Trikot",
+  "Regex",
+  "Boolean",
+  "hotpink",
+  "dodgerblue",
+  "shallowcopy",
+  "constructor",
+  "createTextNode",
+  "JavaScriptObjectNotation",
+  "localStorage",
+  "papayawhip",
+  "borderbox",
 ];
 let newWord;
+let hiddenLetter;
+let fail = 0;
+statusBox.innerText = "ACTIVE";
 
 //---------------Event-Listener--------------------------
 newGameBtn.addEventListener("click", function () {
-  //able all Btns
+  statusBox.innerText = "ACTIVE";
+  fail = 0;
+  renderFails(fail);
   newWord = chooseNewWord();
-  console.log(newWord);
+  allLetterBtns.forEach((btn) => (btn.disabled = false));
   renderNewWord();
 });
 
-allLetterBtns.addEventListener("click", function () {
-  //check if geklickter letter ist in word
+allLetterBtns.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    if (fail < 10) {
+      if (btn.disabled === true) {
+        return; //ist das hier der Richtige ausdruck, um die Aktion nicht weitergehen zu lassen?
+      } else if (btn.disabled === false) {
+        const pickedLetter = btn.textContent;
+        searchAndReplaceLetter(pickedLetter);
+        disableBtns(pickedLetter);
+      }
+    }
+    if (fail === 10) {
+      setStatus();
+    }
+  });
 });
 
 // -----------------FUNCTIONS------------------------------
 
 function chooseNewWord() {
-  newWord = wordList[Math.floor(Math.random() * wordList.length)];
+  newWord = wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
   return newWord;
 }
 
 function renderNewWord() {
   outputBox.innerHTML = "";
+  console.log(newWord);
+  for (let i = 0; i < newWord.length; i++) {
+    hiddenLetter = document.createElement("input");
+    hiddenLetter.type = "password";
+    hiddenLetter.className = "hiddenLetter";
 
-  const newDiv = document.createElement("span");
-  const word = document.createElement("div");
-  word.innerText = newWord;
-  newDiv.append(word);
+    hiddenLetter.value = newWord[i];
 
-  outputBox.appendChild(newDiv);
+    outputBox.appendChild(hiddenLetter);
+  }
 }
 
-function searchLetter() {
+function searchAndReplaceLetter(pickedLetter) {
+  const allHiddenLetters = document.querySelectorAll(".hiddenLetter");
+  let letterFound = false;
+
+  for (let i = 0; i < newWord.length; i++) {
+    if (newWord[i] === pickedLetter) {
+      allHiddenLetters[i].type = "text";
+      letterFound = true;
+    }
+  }
+  if (newWord.includes(pickedLetter) === false) {
+    fail++;
+    renderFails(fail);
+  }
+}
+
+function disableBtns(pickedLetter) {
   allLetterBtns.forEach((btn) => {
-    if (btn.checked && newWord.includes(btn.value) === true) {
-      //disable Btn bis neues Word
-      //ersetze placeholder mit Buchstaben
-    } else if (btn.checked && newWord.includes(btn.value) === false) {
-      const fail = Number++; /// hier muss eine Zahl hochzählen
+    if (btn.textContent === pickedLetter) {
+      btn.disabled = true;
     }
   });
 }
 
-function disableBtn() {}
-
-function replaceWithLetters() {}
-
-function countFail() {
-  //count bei jedem Fail der searchLetter FUnktion
+function renderFails(fail) {
+  failBox.innerHTML = "";
+  const spanFail = document.createElement("span");
+  const failText = document.createTextNode(fail);
+  spanFail.append(failText);
+  failBox.appendChild(spanFail);
 }
 
-function failToLoose() {
-  //bei 10 fails abbruch
+function setStatus() {
+  statusBox.innerText = "";
+  const spanStatus = document.createElement("span");
+  const statusText = document.createTextNode("FAIL");
+  spanStatus.append(statusText);
+  statusBox.appendChild(spanStatus);
 }

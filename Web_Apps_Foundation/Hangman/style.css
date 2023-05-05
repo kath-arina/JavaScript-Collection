@@ -36,16 +36,69 @@ main {
   max-height: 100%;
   display: grid;
   grid-template-rows: 3fr 1fr;
+  align-items: center;
+  justify-content: center;
   overflow: auto;
+}
+#newGameBtn {
+  -webkit-appearance: none;
+  background: papayawhip;
+  padding: 0.5rem 1rem;
+  max-width: 400px;
+  box-shadow: 3px 4px;
+  font-size: x-large;
+  font-weight: 700;
+}
+.Fails {
+  font-size: x-large;
+  font-weight: 700;
+  background: papayawhip;
+  padding: 0.5rem 1rem;
+  max-width: 160px;
+
+  border: 2px solid black;
+}
+#Status {
+  font-size: x-large;
+  font-weight: 700;
+  background: papayawhip;
+  padding: 0.5rem 1rem;
+  max-width: 150px;
+  text-align: center;
+  border: 2px solid black;
 }
 
 #output-section {
   height: 350px;
   display: flex;
   justify-content: center;
+  gap: 0.5rem;
   align-items: center;
+}
+
+.hiddenLetter {
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  max-width: 1.5rem;
+  font-size: x-large;
+  font-weight: 600;
+  height: 4rem;
+  gap: 0rem;
+  text-align: center;
 }
 
 #keyboard {
   grid-row: 2/3;
+}
+
+#keyboard > button {
+  -webkit-appearance: none;
+  background: papayawhip;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 0.6rem 0.6rem;
+  width: 2rem;
+  box-shadow: 3px 4px;
+  text-align: center;
 }
